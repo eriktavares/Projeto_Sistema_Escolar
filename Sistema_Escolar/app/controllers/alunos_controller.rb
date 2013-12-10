@@ -1,74 +1,59 @@
 class AlunosController < ApplicationController
-  before_action :set_aluno, only: [:show, :edit, :update, :destroy]
 
-  # GET /alunos
-  # GET /alunos.json
-  def index
-    @alunos = Aluno.all
-  end
+def index
+  @alunos = Aluno.order :nome
+end
 
-  # GET /alunos/1
-  # GET /alunos/1.json
-  def show
-  end
 
-  # GET /alunos/new
-  def new
-    @aluno = Aluno.new
-  end
+def new
+@turmas=Turma.order:nome
+ @aluno = Aluno.new
+end
 
-  # GET /alunos/1/edit
-  def edit
-  end
+def create
+  @aluno= Aluno.new(params[:aluno])
 
-  # POST /alunos
-  # POST /alunos.json
-  def create
-    @aluno = Aluno.new(aluno_params)
-
-    respond_to do |format|
-      if @aluno.save
-        format.html { redirect_to @aluno, notice: 'Aluno was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @aluno }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @aluno.errors, status: :unprocessable_entity }
-      end
+  respond_to do |format|
+    if @aluno.save
+      format.html { redirect_to @aluno,
+        notice: 'Aluno cadastrado.' }
+     
+    else
+      @turmas=Turma.order:nome
+      format.html { render action: "new" }
+      
     end
   end
+end
 
-  # PATCH/PUT /alunos/1
-  # PATCH/PUT /alunos/1.json
-  def update
-    respond_to do |format|
-      if @aluno.update(aluno_params)
-        format.html { redirect_to @aluno, notice: 'Aluno was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @aluno.errors, status: :unprocessable_entity }
-      end
-    end
+def show
+  @aluno = Aluno.find(params[:id])
+end
+
+def destroy
+  @aluno = Aluno.find(params[:id])
+  @aluno.destroy
+
+  redirect_to(action: "index")
+end
+
+def update
+  @aluno= Aluno.find(params[:id])
+respond_to do |format|
+  if @aluno.update_attributes(params[:aluno])
+   format.html { redirect_to @aluno,
+        notice: 'Aluno Alterado.' }
+else
+	@turmas=Aluno.order:nome
+format.html { render action: "edit" }
   end
+end
 
-  # DELETE /alunos/1
-  # DELETE /alunos/1.json
-  def destroy
-    @aluno.destroy
-    respond_to do |format|
-      format.html { redirect_to alunos_url }
-      format.json { head :no_content }
-    end
-  end
+end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_aluno
-      @aluno = Aluno.find(params[:id])
-    end
+def edit
+	@turmas=Turma.order:nome
+  @aluno = Aluno.find params[:id]
+end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def aluno_params
-      params.require(:aluno).permit(:nome, :turma_id)
-    end
 end
