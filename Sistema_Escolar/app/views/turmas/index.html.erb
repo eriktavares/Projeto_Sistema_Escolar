@@ -1,0 +1,29 @@
+<h1>Listing turmas</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Professor</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @turmas.each do |turma| %>
+      <tr>
+        <td><%= turma.nome %></td>
+        <td><%= turma.professor_id %></td>
+        <td><%= link_to 'Show', turma %></td>
+        <td><%= link_to 'Edit', edit_turma_path(turma) %></td>
+        <td><%= link_to 'Destroy', turma, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Turma', new_turma_path %>

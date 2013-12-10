@@ -1,7 +1,7 @@
 class CreateProfessores < ActiveRecord::Migration
   def self.up
     create_table :professores do |t|
-	t.string :nome, limit: 80
+	t.string :nome, limit: 40
       t.timestamps
     end
   end
