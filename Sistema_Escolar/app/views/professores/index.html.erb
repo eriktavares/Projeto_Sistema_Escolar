@@ -1,27 +1,24 @@
-<h1>Listing professores</h1>
-
+<%= stylesheet_link_tag 'scaffold' %>
+<h1>Listagem de Professores</h1>
+<br/>
+<%= link_to 'Novo', action: 'new' %>
 <table>
-  <thead>
-    <tr>
-      <th>Nome</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @professores.each do |professor| %>
-      <tr>
-        <td><%= professor.nome %></td>
-        <td><%= link_to 'Show', professor %></td>
-        <td><%= link_to 'Edit', edit_professor_path(professor) %></td>
-        <td><%= link_to 'Destroy', professor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
+  <tr>
+	<th>ID</th>
+    <th>Nome</th>
+  </tr>
+<% @professores.each do |professor| %>
+  <tr>
+<td><%= professor.id %></td>
+    <td><%= professor.nome %></td>
+<td>
+      <%= link_to 'Mostrar', action: 'show', id: professor %>
+    </td>
+<td>
+  <%= link_to 'Deletar', {action: 'destroy', id: professor},
+                         {method: "delete"}  %>
+</td>
+  </tr>
+<% end %>
 </table>
 
-<br>
-
-<%= link_to 'New Professor', new_professor_path %>

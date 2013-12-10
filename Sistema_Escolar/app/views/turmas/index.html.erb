@@ -1,10 +1,10 @@
-<h1>Listing turmas</h1>
+<h1>Listing provas</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Nome</th>
-      <th>Professor</th>
+      <th>Nota</th>
+      <th>Aluno</th>
       <th></th>
       <th></th>
       <th></th>
@@ -12,13 +12,13 @@
   </thead>
 
   <tbody>
-    <% @turmas.each do |turma| %>
+    <% @provas.each do |prova| %>
       <tr>
-        <td><%= turma.nome %></td>
-        <td><%= turma.professor_id %></td>
-        <td><%= link_to 'Show', turma %></td>
-        <td><%= link_to 'Edit', edit_turma_path(turma) %></td>
-        <td><%= link_to 'Destroy', turma, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= prova.nota %></td>
+        <td><%= prova.aluno_id %></td>
+        <td><%= link_to 'Show', prova %></td>
+        <td><%= link_to 'Edit', edit_prova_path(prova) %></td>
+        <td><%= link_to 'Destroy', prova, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +26,4 @@
 
 <br>
 
-<%= link_to 'New Turma', new_turma_path %>
+<%= link_to 'New Prova', new_prova_path %>

@@ -1,5 +1,15 @@
-<h1>New professor</h1>
+<%= stylesheet_link_tag 'scaffold' %>
+<h1>Adicionando Professor</h1>
 
-<%= render 'form' %>
+<ul>
+<% @professor.errors.full_messages.each do |msg| %>
+  <li><%= msg %></li>
+<% end %>
+</ul>
 
-<%= link_to 'Back', professores_path %>
+
+<%= form_for @professor do |f| %>
+  Nome: <%= f.text_field :nome %><br/>
+  <%= f.submit %>
+<% end %>
+<%= link_to 'Voltar', {action: 'index'} %>

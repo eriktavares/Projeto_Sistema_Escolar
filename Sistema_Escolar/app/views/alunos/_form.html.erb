@@ -1,7 +1,7 @@
 <%= form_for(@aluno) do |f| %>
   <% if @aluno.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@aluno.errors.count, "error") %> prohibited this aluno from being saved:</h2>
+      <h2><%= pluralize(@aluno.errors.count, "Error") %> Campo deve ser preenchido!</h2>
 
       <ul>
       <% @aluno.errors.full_messages.each do |msg| %>
@@ -17,7 +17,8 @@
   </div>
   <div class="field">
     <%= f.label :turma_id %><br>
-    <%= f.number_field :turma_id %>
+     <%= f.collection_select(:turma_id,@turmas,
+                                    :id, :nome, :prompt => true) %>
   </div>
   <div class="actions">
     <%= f.submit %>

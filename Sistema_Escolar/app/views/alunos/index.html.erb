@@ -1,9 +1,12 @@
-<h1>Listing alunos</h1>
+<h1>Listagem de Alunos</h1>
 
+
+<%= link_to 'Novo Aluno', new_aluno_path %>
 <table>
   <thead>
     <tr>
       <th>Nome</th>
+<td></td>
       <th>Turma</th>
       <th></th>
       <th></th>
@@ -15,10 +18,18 @@
     <% @alunos.each do |aluno| %>
       <tr>
         <td><%= aluno.nome %></td>
-        <td><%= aluno.turma_id %></td>
-        <td><%= link_to 'Show', aluno %></td>
-        <td><%= link_to 'Edit', edit_aluno_path(aluno) %></td>
-        <td><%= link_to 'Destroy', aluno, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+	<td></td>
+        <td><%= aluno.turma.nome %></td>
+	<td>
+      <%= link_to 'Mostrar', action: 'show', id: aluno %>
+    </td>
+<td>
+      <%= link_to 'Editar', action: 'edit', id: aluno %>
+    </td>
+<td>
+  <%= link_to 'Deletar', {action: 'destroy', id: aluno},
+                         {method: "delete"}  %>
+</td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +37,3 @@
 
 <br>
 
-<%= link_to 'New Aluno', new_aluno_path %>
