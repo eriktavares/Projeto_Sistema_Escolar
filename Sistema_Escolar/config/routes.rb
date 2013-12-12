@@ -1,9 +1,14 @@
 SistemaEscolar::Application.routes.draw do
-  resources :turmas
 
-  resources :alunos
+  root 'inicio#index'
 
-  resources :professores
+  resources :provas
+
+  resources :alunos do resources :provas end
+
+  resources :turmas do resources :alunos end
+
+ resources:professores	
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

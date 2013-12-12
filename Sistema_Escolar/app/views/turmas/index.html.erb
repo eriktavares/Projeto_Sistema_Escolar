@@ -1,10 +1,14 @@
-<h1>Listing provas</h1>
 
+<h1>Listagem de turmas</h1>
+
+
+<%= link_to 'Nova Turma', new_turma_path %>
 <table>
   <thead>
     <tr>
-      <th>Nota</th>
-      <th>Aluno</th>
+      <th>Nome</th>
+<td></td>
+      <th>Professor</th>
       <th></th>
       <th></th>
       <th></th>
@@ -12,13 +16,23 @@
   </thead>
 
   <tbody>
-    <% @provas.each do |prova| %>
+    <% @turmas.each do |turma| %>
       <tr>
-        <td><%= prova.nota %></td>
-        <td><%= prova.aluno_id %></td>
-        <td><%= link_to 'Show', prova %></td>
-        <td><%= link_to 'Edit', edit_prova_path(prova) %></td>
-        <td><%= link_to 'Destroy', prova, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= turma.nome %></td>
+	<td></td>
+        <td><%= turma.professor.nome %></td>
+	<td></td>
+	<td></td>
+	<td>
+      <%= link_to 'Mostrar', action: 'show', id: turma %>
+    </td>
+<td>
+      <%= link_to 'Editar', action: 'edit', id: turma %>
+    </td>
+<td>
+  <%= link_to 'Deletar', {action: 'destroy', id: turma},
+                         {method: "delete"}  %>
+</td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +40,4 @@
 
 <br>
 
-<%= link_to 'New Prova', new_prova_path %>
+

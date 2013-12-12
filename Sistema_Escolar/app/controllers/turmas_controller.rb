@@ -37,7 +37,9 @@ def edit
 end
 
 def show
+
   @turma = Turma.find(params[:id])
+@alunos=@turma.alunos
 end
 
 def destroy

@@ -1,0 +1,36 @@
+<%= form_for(@prova) do |f| %>
+  <% if @prova.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@prova.errors.count, "error") %> prohibited this prova from being saved:</h2>
+
+      <ul>
+      <% @prova.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+
+  <div class="field">
+    <%= f.label :nota %><br>
+    <%= f.text_field :nota %>
+  </div>
+
+
+
+<div class="field">
+
+  <%= f.hidden_field 'aluno_id' %>
+
+</div>
+
+<%= link_to "Voltar", :controller => "alunos",
+                                 :action => "show",
+                                 :id => @aluno%>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

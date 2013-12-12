@@ -10,5 +10,25 @@
   <%= @aluno.turma.nome%>
 </p>
 
+
 <%= link_to 'Editar', edit_aluno_path(@aluno) %> |
-<%= link_to 'Voltar', alunos_path %>
+<%= link_to 'Alunos', alunos_path %>|
+<%= link_to 'Turmas', turmas_path %>
+
+<%= link_to "Adicionar Prova", :controller => "provas",
+                                 :action => "new",
+                                 :aluno => @aluno%>
+
+
+
+<p>
+<th>Provas:</th>
+</p>
+<tbody>
+<% @aluno.provas.each do |prova| %>
+ <tr> 
+	<br/><td><%= prova.nota %></td>
+</tr>
+ <% end %>
+
+ </tbody>

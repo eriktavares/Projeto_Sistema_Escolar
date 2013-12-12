@@ -1,10 +1,11 @@
-<%= form_for(@prova) do |f| %>
-  <% if @prova.errors.any? %>
+<%= form_for(@turma) do |f| %>
+  <% if @turma.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@prova.errors.count, "error") %> prohibited this prova from being saved:</h2>
+      <h2><%= pluralize(@turma.errors.count, "Erro") %>, Campo deve ser preenchido!
+</h2>
 
       <ul>
-      <% @prova.errors.full_messages.each do |msg| %>
+      <% @turma.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
@@ -12,12 +13,13 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :nota %><br>
-    <%= f.text_field :nota %>
+    <%= f.label :nome %><br>
+    <%= f.text_field :nome %>
   </div>
   <div class="field">
-    <%= f.label :aluno_id %><br>
-    <%= f.number_field :aluno_id %>
+    <%= f.label :professor_id %><br>
+   <%= f.collection_select(:professor_id,@professores,
+                                    :id, :nome, :prompt => true) %>
   </div>
   <div class="actions">
     <%= f.submit %>

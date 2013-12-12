@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nota:</strong>
+  <%= @prova.nota %>
+</p>
+
+<p>
+  <strong>Aluno:</strong>
+  <%= @prova.aluno_id %>
+</p>
+
+
+<%= link_to 'Voltar', aluno_path(@prova.aluno_id) %>

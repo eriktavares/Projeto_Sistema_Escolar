@@ -1,14 +1,14 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Nota:</strong>
-  <%= @prova.nota %>
+  <strong>Nome:</strong>
+  <%= @turma.nome %>
 </p>
 
 <p>
-  <strong>Aluno:</strong>
-  <%= @prova.aluno_id %>
+  <strong>Professor:</strong>
+  <%= @turma.professor.nome %>
 </p>
 
-<%= link_to 'Edit', edit_prova_path(@prova) %> |
-<%= link_to 'Back', provas_path %>
+<%= link_to 'Editar', edit_turma_path(@turma) %> |
+<%= link_to 'Voltar', turmas_path %>

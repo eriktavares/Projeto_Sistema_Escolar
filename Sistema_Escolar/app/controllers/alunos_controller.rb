@@ -56,4 +56,5 @@ def edit
   @aluno = Aluno.find params[:id]
 end
 
+
 end
