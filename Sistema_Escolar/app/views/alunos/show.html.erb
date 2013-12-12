@@ -15,9 +15,17 @@
 <%= link_to 'Alunos', alunos_path %>|
 <%= link_to 'Turmas', turmas_path %>
 
+<div>
+<%if @aluno.provas.count>=4 %>
+<tr>Adicionar Provas</tr>
+<%else%>
+
 <%= link_to "Adicionar Prova", :controller => "provas",
                                  :action => "new",
-                                 :aluno => @aluno%>
+                                :aluno => @aluno%>
+<%end%>
+</div>
+
 
 
 
@@ -28,7 +36,22 @@
 <% @aluno.provas.each do |prova| %>
  <tr> 
 	<br/><td><%= prova.nota %></td>
+	
 </tr>
  <% end %>
 
  </tbody>
+
+<p>
+<strong>Media: <%= @aluno.provas.average(:nota)%></strong>
+</p
+
+<%if @aluno.provas.count==4 %>
+<%if @aluno.provas.average(:nota)>=6 %>
+<p><strong>APROVADO</strong></p>
+<%else%>
+<p><strong>REPROVADO</strong></p>
+
+<%end%>
+<%end%>
+

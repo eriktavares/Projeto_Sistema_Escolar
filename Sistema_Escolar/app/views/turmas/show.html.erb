@@ -12,3 +12,16 @@
 
 <%= link_to 'Editar', edit_turma_path(@turma) %> |
 <%= link_to 'Voltar', turmas_path %>
+<br/>
+<p> </p>
+
+
+ <th>Alunos Matriculados: </th>
+<% @alunos.each do |aluno| %>
+ <tr> 
+	<br/><td><%= aluno.nome %></td>
+	<td><%= link_to 'Mostrar', @aluno %></td>
+</tr>
+ <% end %>
+
+
