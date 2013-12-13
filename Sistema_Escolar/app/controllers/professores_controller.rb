@@ -30,8 +30,7 @@ else
   redirect_to(action: "index")
 end
 end
-def falha
-end
+
 def edit
   @professor = Professor.find params[:id]
 end

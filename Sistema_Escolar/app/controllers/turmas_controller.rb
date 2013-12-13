@@ -44,7 +44,7 @@ end
 
 def destroy
   @turma = Turma.find(params[:id])
-  if @turma.alunos
+  if @turma.alunos.count>0
 redirect_to(action: "show", notice:"Falha, professor esta cadastrado em uma ou mais turmas" )
 else
 @turma.destroy
