@@ -23,11 +23,15 @@ end
 
 def destroy
   @professor = Professor.find(params[:id])
+ if @professor.turmas.count>0
+redirect_to(action: "show", notice:"Falha, professor esta cadastrado em uma ou mais turmas" )
+else
   @professor.destroy
-
   redirect_to(action: "index")
 end
-
+end
+def falha
+end
 def edit
   @professor = Professor.find params[:id]
 end

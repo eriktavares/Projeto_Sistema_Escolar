@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+
 
 <p>
   <strong>Nome:</strong>
@@ -20,8 +20,9 @@
 <% @alunos.each do |aluno| %>
  <tr> 
 	<br/><td><%= aluno.nome %></td>
-	<td><%= link_to 'Mostrar', @aluno %></td>
+	<td><%= link_to "Mostrar", :controller => "alunos",
+                                 :action => "show",
+                                :id => aluno.id%></td>
 </tr>
  <% end %>
-
 

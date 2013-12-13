@@ -33,7 +33,7 @@ end
 
 def edit
 	@professores=Professor.order:nome
-  @turma = Turma.find params[:id]
+  @turma = Turma.find (params[:id])
 end
 
 def show
@@ -44,11 +44,13 @@ end
 
 def destroy
   @turma = Turma.find(params[:id])
-  @turma.destroy
-
+  if @turma.alunos
+redirect_to(action: "show", notice:"Falha, professor esta cadastrado em uma ou mais turmas" )
+else
+@turma.destroy
   redirect_to(action: "index")
 end
-
+end
 def update
   @turma= Turma.find(params[:id])
 respond_to do |format|

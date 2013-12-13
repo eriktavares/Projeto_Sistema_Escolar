@@ -6,3 +6,17 @@
   <%= @professor.nome %>
 </p>
 <%= link_to 'Voltar', action: 'index' %>
+
+<p>Turmas:
+<tbody>
+<% @professor.turmas.each do |turma| %>
+ <tr> 
+	<br/><td><%= turma.nome %></td>
+	<td><%= link_to "Mostrar", :controller => "turmas",
+                                 :action => "show",
+                                :id => turma%></td>
+</tr>
+ <% end %>
+
+ </tbody>
+</p>

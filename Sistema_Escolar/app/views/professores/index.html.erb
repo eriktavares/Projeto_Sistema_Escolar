@@ -1,4 +1,6 @@
 <%= stylesheet_link_tag 'scaffold' %>
+<p id="notice"><%= notice %></p>
+
 <h1>Listagem de Professores</h1>
 <br/>
 <%= link_to 'Novo', action: 'new' %>
@@ -21,7 +23,5 @@
   </tr>
 <% end %>
 </table>
-
 <br>
 <%= link_to 'Voltar', root_path %>
-

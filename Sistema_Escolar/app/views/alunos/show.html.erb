@@ -36,7 +36,10 @@
 <% @aluno.provas.each do |prova| %>
  <tr> 
 	<br/><td><%= prova.nota %></td>
-	
+	<td><%= link_to "Editar", :controller => "provas",
+                                 :action => "edit",
+                                :prova => prova%></td>
+
 </tr>
  <% end %>
 

@@ -44,7 +44,7 @@ respond_to do |format|
    format.html { redirect_to @aluno,
         notice: 'Aluno Alterado.' }
 else
-	@turmas=Aluno.order:nome
+	@turmas=Turma.order:nome
 format.html { render action: "edit" }
   end
 end
